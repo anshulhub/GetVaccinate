@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+
+
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
+            integrity="sha512-PgQMlq+nqFLV4ylk1gwUOgm6CtIIXkKwaIHp/PAIWHzig/lKZSEGKEysh0TCVbHJXCLN7WetD8TFecIky75ZfQ=="
+            crossorigin="anonymous" />
+        <title>Get Vaccine</title>
+        <link rel="shortcut icon" href="images/logo.png" type="image/png">
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+
+    <body>
+        <div class="container-fluid main_menu">
+            <div class="row">
+                <div class="col-md-10 col-12 mx-auto">
+
+
+                    <nav class="navbar navbar-expand-lg ">
+                        <a class="navbar-brand" href="/"><i class="far fa-snowflake fir"></i><span id="title"> Get
+                                Vaccine </span><i class="far fa-snowflake"></i></a>
+                    </nav>
+                </div>
+
+                <div id="creator">Created with <i class="fas fa-heart"></i> by Anshul</div>
+            </div>
+        </div>
+
+        <!-- main header  -->
+        <div class="main_header">
+
+
+            <div class="row">
+                <div class="col-md-10 col-12 mx-auto">
+
+                    <div class="container-fluid  main_content">
+
+                        <form class="temp_form ">
+
+                            <input type="text" id="cityName" placeholder="Enter Your City Pincode..."
+                                autocomplete="off">
+                            <br>
+                            <div id="check">
+                            <input type="checkbox" id="age" name="age" value="45">
+                            <label for="vehicle1">Check for 45+</label><br>
+                        </div>
+                            <p id="temp_err"></p>
+                        </form>
+
+                        <div class="tempInformation  ">
+                            <div class="top_layer">
+                                <p id="day">Tuesday</p>
+                                <p id="today_date">13 oct</p>
+                                <p id="time">05:55</p>
+
+
+                            </div>
+                            <div class="main_layer ">
+                                <p id="city_name">Get results here... </p>
+                                <div class="middle_layer data_hide">
+                                    <p id="address" style="font-size: 25px;"></p>
+                                    <p id="dose" style="font-size: 25px;"></p>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <script src="js/nw.js"></script>
+    </body>
+
+    </html>
