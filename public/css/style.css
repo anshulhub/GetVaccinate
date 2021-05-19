@@ -29,6 +29,7 @@ body {
 
 .row {
   margin: 0;
+  /* overflow-y: scroll; */
 }
 
 /* navbar style */
@@ -53,7 +54,7 @@ body {
 }
 
 .navbar a:hover {
-  color:#ffc107;
+  color:#47c6f8;
   transform: scale(1.1);
 }
 
@@ -157,7 +158,9 @@ body {
   filter: drop-shadow(0 0.5rem 1rem rgba(0, 0, 0, 0.3));
 }
 
-
+.main_header{
+  overflow-y: scroll;
+}
 /* weather page style */
 /* temp input fields style code */
 

@@ -8,9 +8,12 @@ const today_date = document.getElementById("today_date");
 const time = document.getElementById("time");
 const checkbox = document.getElementById("age")
 
+const audio = new Audio("audioo.mp3");
 function go() {
-    const audio = new Audio("audioo.mp3");
     audio.play();
+}
+function stop(){
+    audio.pause();
 }
 
 const getInfo = async () => {
@@ -63,6 +66,7 @@ const getInfo = async () => {
                 city_name.innerText = `Checking for Age 18+ `;
                 address.innerText = `No Center Available now!!!! `;
                 dose.innerText = ``;
+                stop();
             }
             datahide.classList.remove('data_hide');
             cityVal = "";
@@ -73,10 +77,9 @@ const getInfo = async () => {
             datahide.classList.add("data_hide");
             city_name.innerText = `No Center Available now!!!! `;
             console.log("Not Available")
+            stop();
         }
-
     }
-
 }
 
 var d = new Date();
