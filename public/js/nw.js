@@ -17,9 +17,7 @@ function stop(){
 }
 
 const getInfo = async () => {
-    // event.preventDefault();
-
-    // let cityVal;
+    
     let cityVal = cityName.value;
 
     if (cityVal === "") {
@@ -39,7 +37,7 @@ const getInfo = async () => {
 
             const feed = arrData[0].sessions;
             // const lat = arrData[0];
-            if ((feed[0].vaccine == "COVISHIELD" || feed[0].vaccine == "COVAXIN") && feed[0].min_age_limit == "18") {
+            if (feed[0].min_age_limit == "18" && feed[0].available_capacity > 0) {
                 city_name.innerText = `Total Centers: ${feed.length}  `
                 address.innerText = `Address: ${feed[0].address}  `
                 dose.innerText = `Doses: ${feed[0].available_capacity}`
@@ -50,7 +48,7 @@ const getInfo = async () => {
                 console.log("=====================================================================")
                 go();
             }
-            else if (checkbox.checked == true && feed[0].min_age_limit == "45") {
+            else if (checkbox.checked == true && feed[0].min_age_limit == "45" && feed[0].available_capacity > 0) {
                 city_name.innerText = `Total Centers: ${feed.length}  `
                 address.innerText = `Address: ${feed[0].address}  `
                 dose.innerText = `Doses: ${feed[0].available_capacity}`
