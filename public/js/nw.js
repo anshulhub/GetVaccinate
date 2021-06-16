@@ -6,7 +6,8 @@ const datahide = document.querySelector('.middle_layer');
 const day = document.getElementById("day");
 const today_date = document.getElementById("today_date");
 const time = document.getElementById("time");
-const checkbox = document.getElementById("age")
+const checkbox = document.getElementById("age");
+const checkbox2 = document.getElementById("tomo");
 
 const audio = new Audio("audioo.mp3");
 function go() {
@@ -28,7 +29,7 @@ const getInfo = async () => {
         try {
 
 
-            let url = `https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByPin?pincode=${cityVal}&date=${b}%2F${a.getMonth() + 1}%2F2021`
+            let url = `https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByPin?pincode=${cityVal}&date=${dat}%2F${a.getMonth() + 1}%2F2021`
             const response = await fetch(url);
 
             const data = await response.json();
@@ -36,35 +37,45 @@ const getInfo = async () => {
             const arrData = [data];
 
             const feed = arrData[0].sessions;
-            // const lat = arrData[0];
-            if (feed[0].min_age_limit == "18" && feed[0].available_capacity > 0) {
-                city_name.innerText = `Total Centers: ${feed.length}  `
-                address.innerText = `Address: ${feed[0].address}  `
-                dose.innerText = `Doses: ${feed[0].available_capacity}`
+            
+            // const len=feed.length;
+            console.log(dat)
+            for ( var i=0; i<feed.length; i++){
+            
+            if (checkbox.checked == false && feed[i].min_age_limit == "18" && feed[i].available_capacity > 0) {
+                
                 console.log(`Total number of Centers Available - ${feed.length}`)
-                console.log(`Name: ${feed[0].name}   `)
-                console.log(`Address: ${feed[0].address} `)
-                console.log(`Doses Available: ${feed[0].available_capacity} `)
+                console.log(`Name: ${feed[i].name}   `)
+                console.log(`Address: ${feed[i].address} `)
+                console.log(`Doses Available: ${feed[i].available_capacity} `)
+                city_name.innerText = `Total Centers: ${feed.length}  `
+                address.innerText = `Address: ${feed[i].address}  `
+                dose.innerText = `Doses: ${feed[i].available_capacity}`
                 console.log("=====================================================================")
                 go();
+                break;
             }
-            else if (checkbox.checked == true && feed[0].min_age_limit == "45" && feed[0].available_capacity > 0) {
+            
+            else if (checkbox.checked == true && feed[i].min_age_limit == "45" && feed[i].available_capacity > 0) {
                 city_name.innerText = `Total Centers: ${feed.length}  `
-                address.innerText = `Address: ${feed[0].address}  `
-                dose.innerText = `Doses: ${feed[0].available_capacity}`
+                address.innerText = `Address: ${feed[i].address}  `
+                dose.innerText = `Doses: ${feed[i].available_capacity}`
                 console.log(`Total number of Centers Available - ${feed.length}`)
-                console.log(`Name: ${feed[0].name}   `)
-                console.log(`Address: ${feed[0].address} `)
-                console.log(`Doses Available: ${feed[0].available_capacity} `)
+                console.log(`Name: ${feed[i].name}   `)
+                console.log(`Address: ${feed[i].address} `)
+                console.log(`Doses Available: ${feed[i].available_capacity} `)
                 console.log("=====================================================================")
                 go();
+                break;
             }
             else {
-                console.log("No Center Available now!!!!!!");
+                console.log("No Centers Available now!!!!!!");
                 city_name.innerText = `Checking for Age 18+ `;
-                address.innerText = `No Center Available now!!!! `;
+                address.innerText = `No Centers Available now!!!! `;
                 dose.innerText = ``;
                 stop();
+                
+            }
             }
             datahide.classList.remove('data_hide');
             cityVal = "";
@@ -94,8 +105,13 @@ var n = weekday[d.getDay()];
 day.innerText = n;
 
 const date = new Date();
-var b = date.getDate();
-// console.log();
+var b = date.getDate() ;
+if (checkbox2.checked == true){
+    var dat = b+1;
+}
+else{
+    dat = b;
+}
 
 var a = new Date();
 var month = new Array();

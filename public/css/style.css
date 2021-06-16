@@ -341,10 +341,17 @@ sup {
   }
 }
 #check{
+  display: flex;
+  flex-direction: row;
+  justify-content:center;
+  align-items: center;
 margin-top: 5px;
 align-self: center;
 font-size: 18px;
 text-align-last: center;
+}
+#space{
+  margin: 0px 25px;
 }
 
 #creator{
