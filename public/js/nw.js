@@ -13,12 +13,12 @@ const audio = new Audio("audioo.mp3");
 function go() {
     audio.play();
 }
-function stop(){
+function stop() {
     audio.pause();
 }
 
 const getInfo = async () => {
-    
+
     let cityVal = cityName.value;
 
     if (cityVal === "") {
@@ -37,45 +37,43 @@ const getInfo = async () => {
             const arrData = [data];
 
             const feed = arrData[0].sessions;
-            
-            // const len=feed.length;
-            console.log(dat)
-            for ( var i=0; i<feed.length; i++){
-            
-            if (checkbox.checked == false && feed[i].min_age_limit == "18" && feed[i].available_capacity > 0) {
-                
-                console.log(`Total number of Centers Available - ${feed.length}`)
-                console.log(`Name: ${feed[i].name}   `)
-                console.log(`Address: ${feed[i].address} `)
-                console.log(`Doses Available: ${feed[i].available_capacity} `)
-                city_name.innerText = `Total Centers: ${feed.length}  `
-                address.innerText = `Address: ${feed[i].address}  `
-                dose.innerText = `Doses: ${feed[i].available_capacity}`
-                console.log("=====================================================================")
-                go();
-                break;
-            }
-            
-            else if (checkbox.checked == true && feed[i].min_age_limit == "45" && feed[i].available_capacity > 0) {
-                city_name.innerText = `Total Centers: ${feed.length}  `
-                address.innerText = `Address: ${feed[i].address}  `
-                dose.innerText = `Doses: ${feed[i].available_capacity}`
-                console.log(`Total number of Centers Available - ${feed.length}`)
-                console.log(`Name: ${feed[i].name}   `)
-                console.log(`Address: ${feed[i].address} `)
-                console.log(`Doses Available: ${feed[i].available_capacity} `)
-                console.log("=====================================================================")
-                go();
-                break;
-            }
-            else {
-                console.log("No Centers Available now!!!!!!");
-                city_name.innerText = `Checking for Age 18+ `;
-                address.innerText = `No Centers Available now!!!! `;
-                dose.innerText = ``;
-                stop();
-                
-            }
+
+            for (var i = 0; i < feed.length; i++) {
+
+                if (checkbox.checked == false && feed[i].min_age_limit == "18" && feed[i].available_capacity > 0) {
+
+                    console.log(`Total number of Centers Available - ${feed.length}`)
+                    console.log(`Name: ${feed[i].name}   `)
+                    console.log(`Address: ${feed[i].address} `)
+                    console.log(`Doses Available: ${feed[i].available_capacity} `)
+                    city_name.innerText = `Total Centers: ${feed.length}  `
+                    address.innerText = `Address: ${feed[i].address}  `
+                    dose.innerText = `Doses: ${feed[i].available_capacity}`
+                    console.log("=====================================================================")
+                    go();
+                    break;
+                }
+
+                else if (checkbox.checked == true && feed[i].min_age_limit == "45" && feed[i].available_capacity > 0) {
+                    city_name.innerText = `Total Centers: ${feed.length}  `
+                    address.innerText = `Address: ${feed[i].address}  `
+                    dose.innerText = `Doses: ${feed[i].available_capacity}`
+                    console.log(`Total number of Centers Available - ${feed.length}`)
+                    console.log(`Name: ${feed[i].name}   `)
+                    console.log(`Address: ${feed[i].address} `)
+                    console.log(`Doses Available: ${feed[i].available_capacity} `)
+                    console.log("=====================================================================")
+                    go();
+                    break;
+                }
+                else {
+                    console.log("No Centers Available now!!!!!!");
+                    city_name.innerText = `Checking for Age 18+ `;
+                    address.innerText = `No Centers Available now!!!! `;
+                    dose.innerText = ``;
+                    stop();
+
+                }
             }
             datahide.classList.remove('data_hide');
             cityVal = "";
@@ -105,12 +103,14 @@ var n = weekday[d.getDay()];
 day.innerText = n;
 
 const date = new Date();
-var b = date.getDate() ;
-if (checkbox2.checked == true){
-    var dat = b+1;
-}
-else{
-    dat = b;
+var b = date.getDate();
+
+var dat = b + 1;
+
+function tomorrow() {
+    if (checkbox2.checked != true) {
+        var dat = b;
+    }
 }
 
 var a = new Date();
@@ -142,10 +142,7 @@ if (tim < 10) {
     tim = "0" + tim
 }
 
-
 var hou = `${hou}:${tim}`;
 time.innerText = hou
-
-
 
 setInterval(() => getInfo(), 5000);
